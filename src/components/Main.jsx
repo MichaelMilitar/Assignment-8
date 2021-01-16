@@ -13,31 +13,26 @@ export class Main extends Component {
         this.removeRow = this.removeRow.bind(this)
         this.removeColumn = this.removeColumn.bind(this)
     }
-
     //add row by 1
     addRow() {
         this.setState(state => ({row: state.row + 1}))
     }
-
     //add column by 1
     addColumn() {
         this.setState(state => ({col: state.col + 1}))
     }
-
     //remove row by 1
     removeRow() {
         if (this.state.row > 0) {
             this.setState(state => ({row: state.row - 1}))
         }
     }
-
     //remove column by 1
     removeColumn() {
         if (this.state.col > 0) {
             this.setState(state => ({col: state.col - 1}))
         }
     }
-
     //buttons
     render() {
         return (
@@ -53,5 +48,4 @@ export class Main extends Component {
         )
     }
 }
-
-export default Main
+export default Main;

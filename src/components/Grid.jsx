@@ -2,18 +2,17 @@ import React, { useState } from 'react'
 
 const Grid = (props) => {
     const [color, setColor] = useState("white")
-
     const count = props.row * props.col
     let items = []
     let col = ""
 
     //choose color
-    const choose = (e) => {
-        setColor(e.target.value)
+    const choose = (x) => {
+        setColor(x.target.value)
     }
     //fill single cell
-    const fillOne = (e) => {
-        e.target.style.background = color
+    const fillOne = (x) => {
+        x.target.style.background = color
     }
     //fill all empty
     const fillUncolored = () => {
@@ -38,13 +37,12 @@ const Grid = (props) => {
         })
     }
     //click on cell
-    const mouseDown = (e) => {
-        fillOne(e)
+    const mouseDown = (x) => {
+        fillOne(x)
         document.querySelectorAll(".grid-item").forEach(item => {
             item.addEventListener("mouseover", fillOne)
         })
     }
-
     document.addEventListener("mouseup", () => {
         document.querySelectorAll(".grid-item").forEach(item => {
             item.removeEventListener("mouseover", fillOne)
@@ -54,7 +52,6 @@ const Grid = (props) => {
     for (let i = 0; i < count; i++) {
         items.push(<div className="grid-item" onClick={fillOne} onMouseDown={mouseDown} style={{background: "white"}} key={i}></div>)
     }
-
     for (let i = 0; i < props.col; i++) {
         col += "auto "
     }
@@ -72,13 +69,10 @@ const Grid = (props) => {
             <button onClick={fillUncolored}>Fill Uncolored</button> 
             <button onClick={fillAll}>Fill All</button>
             <button onClick={clearAll}>Clear All</button>
-
             <div className="grid" style={{gridTemplateColumns: col}}>
                 {items}
             </div>
         </div>
-       
     )
 }
-
-export default Grid
+export default Grid;
